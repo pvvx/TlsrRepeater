@@ -1,0 +1,34 @@
+
+OUT_DIR += $(SRC_DIR) \
+$(SRC_DIR)/patch_z_sdk \
+$(SRC_DIR)/custom_zcl
+
+OBJS += \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/cstartup_8258.o \
+$(OUT_PATH)$(SRC_DIR)/div_mod.o \
+$(OUT_PATH)$(SRC_DIR)/app.o \
+$(OUT_PATH)$(SRC_DIR)/app_button.o \
+$(OUT_PATH)$(SRC_DIR)/app_ep_cfg.o \
+$(OUT_PATH)$(SRC_DIR)/app_light.o \
+$(OUT_PATH)$(SRC_DIR)/app_zb_cb.o \
+$(OUT_PATH)$(SRC_DIR)/app_zcl_cb.o \
+$(OUT_PATH)$(SRC_DIR)/zcl_onOffCb.o \
+$(OUT_PATH)$(SRC_DIR)/battery.o \
+$(OUT_PATH)$(SRC_DIR)/main.o \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/flash.o \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/flash_drv.o \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/adc_drv.o \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/random.o \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/hw_drv.o \
+$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/drv_nv.o
+
+#$(OUT_PATH)$(SRC_DIR)/patch_z_sdk/i2c_drv.o
+
+# Each subdirectory must supply rules for building sources it contributes
+$(OUT_PATH)$(SRC_DIR)/%.o: $(PROJECT_PATH)$(SRC_DIR)/%.c
+	@echo 'Building file: $<'
+	@$(TC32_PATH)tc32-elf-gcc $(GCC_FLAGS) $(INCLUDE_PATHS) -c -o"$@" "$<"
+	
+$(OUT_PATH)$(SRC_DIR)/%.o: $(PROJECT_PATH)$(SRC_DIR)/%.S
+	@echo 'Building file: $<'
+	@$(TC32_PATH)tc32-elf-gcc $(GCC_FLAGS) $(ASM_FLAGS) $(INCLUDE_PATHS) -c -o"$@" "$<"
