@@ -1,0 +1,15 @@
+[
+    {
+        "fileVersion": 77825,
+        "fileSize": 188434,
+        "manufacturerCode": 60000,
+        "imageType": 513,
+        "sha512": "a59f0f5057a4bb49be58cb2e2d5c0d7147584972e2de63878f4b9ee85f050b9802db7d9e4c469417f3f15b3a4cea55eb15ddc2c46925e94ec4cb7aedebdb4d51",
+        "otaHeaderString": "Telink-pvvx:ZG807Z_z",
+        "modelId": "ZG807Z_z",
+        "manufacturerName": [
+            "Telink-pvvx"
+        ],
+        "url": "https://github.com/pvvx/TlsrRepeater/raw/refs/heads/master/bin/ea60-0201-00013001-ZG807Z.zigbee"
+    }
+]
