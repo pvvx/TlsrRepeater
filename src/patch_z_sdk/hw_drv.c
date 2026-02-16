@@ -119,6 +119,8 @@ startup_state_e drv_platform_init(void)
 
 	/* Get calibration info to improve performance */
 	if(state != SYSTEM_DEEP_RETENTION){
+		drv_calib_adc_verf();
+		battery_detect(1);
 		// Проверка на старт по 0x20000
 		tuya_zigbee_ota();
 #if PM_ENABLE
@@ -127,8 +129,6 @@ startup_state_e drv_platform_init(void)
 		rc_32k_cal();
 		pm_select_internal_32k_rc();
 #endif
-		drv_calib_adc_verf();
-		battery_detect(1);
 		random_generator_init();
 		internalFlashSizeCheck();
 	} else {
