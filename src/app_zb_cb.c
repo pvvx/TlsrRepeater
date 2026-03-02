@@ -202,8 +202,6 @@ void zbdemo_bdbCommissioningCb(u8 status, void *arg)
     case BDB_COMMISSION_STA_SUCCESS:
         heartInterval = 1000;
 
-        light_blink_start(2, 200, 200);
-
         if (steerTimerEvt) {
             TL_ZB_TIMER_CANCEL(&steerTimerEvt);
         }
@@ -222,6 +220,7 @@ void zbdemo_bdbCommissioningCb(u8 status, void *arg)
             TL_ZB_TIMER_SCHEDULE(app_bdbFindAndBindStart, NULL, 1000);
         }
 #endif
+        light_blink_start(7, 200, 200);
         break;
     case BDB_COMMISSION_STA_IN_PROGRESS:
         break;
@@ -240,6 +239,7 @@ void zbdemo_bdbCommissioningCb(u8 status, void *arg)
                 TL_ZB_TIMER_CANCEL(&steerTimerEvt);
             }
             steerTimerEvt = TL_ZB_TIMER_SCHEDULE(app_bdbNetworkSteerStart, NULL, jitter);
+            light_blink_start(5, 500, 500);
         }
         break;
     case BDB_COMMISSION_STA_FORMATION_FAILURE:
@@ -256,6 +256,7 @@ void zbdemo_bdbCommissioningCb(u8 status, void *arg)
         if (!rejoinBackoffTimerEvt) {
             rejoinBackoffTimerEvt = TL_ZB_TIMER_SCHEDULE(app_rejoinBackoff, NULL, 60 * 1000);
         }
+        light_blink_start(5, 500, 500);
         break;
     case BDB_COMMISSION_STA_FORMATION_DONE:
 #ifndef ZBHCI_EN

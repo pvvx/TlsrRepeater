@@ -275,9 +275,6 @@ void user_init(bool isRetention)
     /* Initialize user application */
     user_app_init();
 
-    /* Adjust light state to default attributes*/
-    light_adjust();
-
     /* User's Task */
 #if ZBHCI_EN
     zbhciInit();

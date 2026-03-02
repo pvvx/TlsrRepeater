@@ -91,67 +91,46 @@ extern "C" {
 #define TLSR_TL721X                     0x07
 #define TLSR_TL321X                     0x08
 
-
-/* FLASH 1M map:
-              1M
-0x100000  ------------
-         |  MAC_Addr  |
- 0xFF000 |------------|
-         | F_CFG_Info | // FACTORY_CFG_BASE_ADD
- 0xFE000 |------------|
-         | U_Cfg_Info | // 0xFC000 CFG_FACTORY_RST_CNT
- 0xFC000 |------------|
-         | USER_DATA  |
- 0x96000 |------------|
-         |     NV     |
- 0x80000 |------------|
-         |            |
-         |            |
-         |  OTA_Image | 256K
-         |            |
-         |            |
- 0x40000 |------------|
-         |            | // 0x32000 FLASH_ADDR_TAB_GPIOS
-         |            |
-         |  Firmware  | 256K
-         |            |
-         |            |
- 0x00000  ------------
-*/
-#define BEGIN_USER_DATA_F1M            0x96000   // begin address for saving energy
-#define END_USER_DATA_F1M              0xFC000   // end address for saving energy
-/*  Flash 512k map:
-     0x80000  ------------
-             |            |
-             |    NV_2    |
-             |            |
-     0x7A000 |------------|
-             | U_Cfg_Info | // 0x79000 CFG_FACTORY_RST_CNT
-     0x78000 |------------|
-             | F_CFG_Info | // 0x77000 FACTORY_CFG_BASE_ADD
-     0x77000 |------------|
-             |  MAC_Addr  |
-     0x76000 |------------|
-             | USER_DATA  |
-     0x72000 |------------|
-             |            |
-             |  OTA_Image | 200k
-             |            |
-     0x40000 |------------|
-             |            |
-             |    NV_1    |
-             |            |
-     0x34000 |------------|
-             |   free     | // 0x32000 FLASH_ADDR_TAB_GPIOS
-     0x32000 |------------|
-             |            |
-             |  Firmware  | 200k
-             |            |
-     0x00000  ------------
+/**********************************************************************
+ * Flash map:
+ *																					  2M							  4M
+ *                                                                 0x200000  ------------         0x400000  ------------
+ *                 512k                           1M                        |  MAC_Addr  |                 |  MAC_Addr  |
+ *    0x80000  ------------         0x100000  ------------         0x1FF000 |------------|        0x3FF000 |------------|
+ *            |            |                 |  MAC_Addr  |                 | F_CFG_Info |                 | F_CFG_Info |
+ *            |    NV_2    |         0xFF000 |------------|        0x1FE000 |------------|        0x3FE000 |------------|
+ *            |            |                 | F_CFG_Info |                 |  Reserved  |                 |  Reserved  |
+ *    0x7A000 |------------|         0xFE000 |------------|         0xFE000 |------------|         0xFE000 |------------|
+ *            | U_Cfg_Info |                 | U_Cfg_Info |                 | U_Cfg_Info |                 | U_Cfg_Info |
+ *    0x78000 |------------|         0xFC000 |------------|         0xFC000 |------------|         0xFC000 |------------|
+ *            | F_CFG_Info |                 |  Reserved  |                 |  Reserved  |                 |  Reserved  |
+ *    0x77000 |------------|         0x96000 |------------|         0x96000 |------------|         0x96000 |------------|
+ *            |  MAC_Addr  |                 |     NV     |                 |     NV     |                 |     NV     |
+ *    0x76000 |------------|         0x80000 |------------|         0x80000 |------------|         0x80000 |------------|
+ *            |            |                 |            |                 |            |                 |            |
+ *            |  OTA_Image |                 |            |                 |            |                 |            |
+ *            |            |                 |  OTA_Image |                 |  OTA_Image |                 |  OTA_Image |
+ *    0x40000 |------------|                 |            |                 |            |                 |            |
+ *            |            |                 |            |                 |            |                 |            |
+ *            |    NV_1    |         0x40000 |------------|         0x40000 |------------|         0x40000 |------------|
+ *            |            |                 |            |                 |            |                 |            |
+ *    0x34000 |------------|                 |            |                 |            |                 |            |
+ *            |            |                 |  Firmware  |                 |  Firmware  |                 |  Firmware  |
+ *            |  Firmware  | 208k            |            | 256k            |            | 256k            |            | 256k
+ *            |            |                 |            |                 |            |                 |            |
+ *    0x00000  ------------          0x00000  ------------          0x00000  ------------          0x00000  ------------
+ *
  */
-#define BEGIN_USER_DATA_F512K             0x72000 // begin address for saving energy
-#define END_USER_DATA_F512K               0x76000 // end address for saving energy
-#define FLASH_ADDR_TAB_GPIOS		  	  0x32000
+/*
+#define BEGIN_USER_DATA_F1M       0x96000   // begin address for saving energy
+#define END_USER_DATA_F1M         0xFC000   // end address for saving energy
+
+#define BEGIN_USER_DATA_F512K     0x72000 // begin address for saving energy
+#define END_USER_DATA_F512K       0x76000 // end address for saving energy
+#define OTA_MAX_SIZE		  	  0x32000
+*/
+#define OTA_MAX_SIZE		  	  0x34000
+
 /** Store zigbee information in flash:
  ********************************************************************************************************
  *   Module ID                  |          512K Flash               |              1M Flash             |
@@ -190,10 +169,10 @@ extern "C" {
 /**********************************************************************
  * ZCL cluster configuration
  */
-#define ZCL_POWER_CFG_SUPPORT					0
+#define ZCL_POWER_CFG_SUPPORT					1
 #define ZCL_ON_OFF_SUPPORT                      1
 #define ZCL_GROUP_SUPPORT                       1
-#define ZCL_SCENE_SUPPORT                       0
+#define ZCL_SCENE_SUPPORT                       1
 #define ZCL_OTA_SUPPORT                         1
 #define ZCL_GP_SUPPORT                          1
 #if TOUCHLINK_SUPPORT

@@ -57,7 +57,7 @@ extern "C" {
 #define PA0_FUNC                AS_GPIO
 #define PA0_DATA_OUT			LED_LIGHT_OFF
 #define PA0_OUTPUT_ENABLE       1
-#define PA0_INPUT_ENABLE        0
+#define PA0_INPUT_ENABLE        1
 
 // ADC
 #if 1//VOLTAGE_DETECT_ENABLE

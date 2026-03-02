@@ -72,6 +72,7 @@
 /**********************************************************************
  * GLOBAL VARIABLES
  */
+// If change - check ZCL_CLUSTER_NUM_MAX !
 /**
  *  @brief Definition for Incoming cluster / Sever Cluster
  */
@@ -164,8 +165,8 @@ const zclAttrInfo_t basic_attrTbl[] = {
 /* power */
 zcl_powerAttr_t g_zcl_powerAttrs =
 {
-    .batteryVoltage    = 33, //in 100 mV units, 0xff - unknown
-    .batteryPercentage = 200 //in 0,5% units, 0xff - unknown
+    .batteryVoltage    = 0xff, //in 100 mV units, 0xff - unknown
+    .batteryPercentage = 0xff //in 0,5% units, 0xff - unknown
 };
 
 const zclAttrInfo_t powerCfg_attrTbl[] =

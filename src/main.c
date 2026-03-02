@@ -129,7 +129,7 @@ void flash_main(void){
             tick = clock_time();
         }
 #else
-        if (clock_time_exceed(tick, 200 * 1000)) {
+        if (clock_time_exceed(tick, BAT_TEST_MS * 1000)) {
     		battery_detect(0);
             tick = clock_time();
         }

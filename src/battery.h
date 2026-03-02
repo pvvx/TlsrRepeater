@@ -8,12 +8,15 @@
 #ifndef _BATTERY_H_
 #define _BATTERY_H_
 
-#define BATTERY_MAX_POWER			3400//3.4v
+#define BATTERY_MAX_POWER			3300//3.3v
 #define BATTERY_LOW_POWER			2500//2.5v
 #define BATTERY_START_POWER			2700//2.7v
 #define LOW_POWER_SLEEP_TIME_ms		30*1000 // 30 sec
 
-#if ZCL_POWER_CFG_SUPPORT
+#define BAT_AVERAGE_COUNT_SHL	6 // 4,5,6,7,8,9,10,11,12 -> 16,32,64,128,256,512,1024,2048,4096
+#define BAT_TEST_MS				1000
+
+#ifdef ZCL_POWER_CFG
 // measured_battery.flag:
 #define FLG_MEASURE_BAT_ADV		0x01
 #define FLG_MEASURE_BAT_CC		0x02

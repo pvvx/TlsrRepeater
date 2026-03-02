@@ -13,6 +13,7 @@ $(OUT_PATH)$(SRC_DIR)/app_light.o \
 $(OUT_PATH)$(SRC_DIR)/app_zb_cb.o \
 $(OUT_PATH)$(SRC_DIR)/app_zcl_cb.o \
 $(OUT_PATH)$(SRC_DIR)/zcl_onOffCb.o \
+$(OUT_PATH)$(SRC_DIR)/zcl_sceneCb.o \
 $(OUT_PATH)$(SRC_DIR)/battery.o \
 $(OUT_PATH)$(SRC_DIR)/main.o \
 $(OUT_PATH)$(SRC_DIR)/patch_z_sdk/flash.o \
