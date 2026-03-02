@@ -41,8 +41,6 @@ typedef enum {
 void light_init(void);
 void light_adjust(void);
 void light_refresh(lightSta_e sta);
-void light_applyUpdate(u8 *curLevel, u16 *curLevel256, s32 *stepLevel256, u16 *remainingTime, u8 minLevel, u8 maxLevel, bool wrap);
-void light_applyUpdate_16(u16 *curLevel, u32 *curLevel256, s32 *stepLevel256, u16 *remainingTime, u16 minLevel, u16 maxLevel, bool wrap);
 
 void light_blink_start(u8 times, u16 ledOnTime, u16 ledOffTime);
 void light_blink_stop(void);
