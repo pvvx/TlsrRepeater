@@ -13,4 +13,13 @@ Zigbee repeater (router) based on TLSR825x chipsets
 * Рассчитан на прямое подключение к Li АКБ или источнику от 2.7V до 5.5V.
 * Измеряет и передает внутреннее напряжение питания и % 
 
+---
+
+<img width="594" height="396" alt="image" src="https://github.com/user-attachments/assets/51ed6b1d-d23e-4abd-91c7-6d8ea98758d2" />
+
+---
+
+<img width="703" height="713" alt="image" src="https://github.com/user-attachments/assets/bd7d434a-a240-449f-b988-66cf81e10160" />
+
+
 
